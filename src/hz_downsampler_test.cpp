@@ -2,15 +2,7 @@
  * @Author: juling julinger.qq.com
  * @Date: 2024-09-13 10:34:16
  * @LastEditors: juling julinger.qq.com
- * @LastEditTime: 2024-12-06 15:57:32
- * @FilePath: /perception_ws/src/perception_test/src/hz_downsampler_test.cpp
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-/*
- * @Author: juling julinger.qq.com
- * @Date: 2024-09-13 10:34:16
- * @LastEditors: juling julinger.qq.com
- * @LastEditTime: 2024-11-29 18:19:32
+ * @LastEditTime: 2025-03-17 14:05:45
  */
 #include "hz_downsampler.h"
 #include <ros/ros.h>
