@@ -1,0 +1,6295 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /TF1/Tree1
+        - /alert_perception1/obs_pc1
+        - /scan_filtered_3d1/PointCloud21
+        - /ScanDepth1/axes_cam_back1
+        - /scan_safer_3d1/front1
+        - /scan_safer_3d1/back1
+        - /pallet_perception1/pallet_link1
+        - /pallet_perception1/live_origin_pc1/Autocompute Value Bounds1
+        - /pallet_perception1/Match2D1/coarse_match1
+        - /pallet_perception1/Match2D1/fine_match1/project_pc1
+        - /pallet_perception1/CLUSTER_METHOD1/legs_clustered_used_pc1
+        - /refective_plate_perception1/sensor_link1
+        - /lunar_tools1/back2
+        - /lunar_tools1/back2/Autocompute Value Bounds1
+        - /lunar_tools1/boxes1
+        - /dynamic_obs_rm1/3D1/front1
+        - /dynamic_obs_rm1/2D1
+        - /dynamic_obs_rm1/2D1/pc_remain1
+        - /multi_tracking1/cartographer_merge_pc1
+        - /nav_checker2/rotate_check1
+        - /nav_checker2/rotate_check1/rotate_collision_point1
+        - /nav_checker2/rotate_check1/rotate_potential_collision_points1
+        - /wuhan_bp1/pointcloud_front1
+        - /laser2image_perception1/shelf_link1
+        - /laser2image_perception1/roi_in_odom1
+        - /laser_safe_check_in_ibvs1/cur_fp1
+        - /costmap_pub_node1
+        - /costmap_pub_node1/Map1/Status1
+        - /costmap_pub_node1/people_status1/Status1
+        - /costmap_pub_node1/people_status1/Namespaces1
+        - /EKF1/filtered_Odometry1/Shape1
+        - /EKF1/filtered_Odometry1/Covariance1
+        - /EKF1/filtered_Odometry1/Covariance1/Position1
+        - /EKF1/filtered_Odometry1/Covariance1/Orientation1
+        - /EKF1/raw_Odometry1
+        - /robot_localization1/Odometry1/Shape1
+        - /robot_localization1/Odometry1/Covariance1
+        - /robot_localization1/Odometry2/Shape1
+      Splitter Ratio: 0.58280921
+    Tree Height: 391
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679016
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: scan
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_footprint:
+          Value: true
+        camera_ast_front:
+          Value: true
+        camera_jz_down:
+          Value: true
+        camera_scepter_pallet:
+          Value: true
+        fm_base_footprint:
+          Value: true
+        fm_camera_ast_front:
+          Value: true
+        fm_camera_jz_down:
+          Value: true
+        fm_camera_scepter_pallet:
+          Value: true
+        fm_laser_link:
+          Value: true
+        fm_laser_ole_1bs_back:
+          Value: true
+        fm_laser_ole_1bs_front_left:
+          Value: true
+        fm_laser_ole_1bs_front_right:
+          Value: true
+        fm_virtual_depth_depth_link:
+          Value: true
+        fm_virtual_down,jz_depth_link:
+          Value: true
+        fm_virtual_front_depth_link:
+          Value: true
+        front_color_frame:
+          Value: true
+        front_depth_frame:
+          Value: true
+        front_ir_frame:
+          Value: true
+        front_link:
+          Value: true
+        imu_link:
+          Value: true
+        laser_link:
+          Value: true
+        laser_ole_1bs_back:
+          Value: true
+        laser_ole_1bs_front_left:
+          Value: true
+        laser_ole_1bs_front_right:
+          Value: true
+        map:
+          Value: true
+        odom:
+          Value: true
+        pallet_color_frame:
+          Value: true
+        pallet_frame:
+          Value: true
+        pallet_transformedColor_frame:
+          Value: true
+        pallet_transformedDepth_frame:
+          Value: true
+        tag_base_footprint:
+          Value: true
+        tag_camera_ast_front:
+          Value: true
+        tag_camera_jz_down:
+          Value: true
+        tag_camera_scepter_pallet:
+          Value: true
+        tag_laser_link:
+          Value: true
+        tag_laser_ole_1bs_back:
+          Value: true
+        tag_laser_ole_1bs_front_left:
+          Value: true
+        tag_laser_ole_1bs_front_right:
+          Value: true
+        virtual_depth_depth_link:
+          Value: true
+        virtual_down,jz_depth_link:
+          Value: true
+        virtual_front_depth_link:
+          Value: true
+      Marker Scale: 0.100000001
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        odom:
+          {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 0.5
+      Cell Size: 0.100000001
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 300
+      Reference Frame: odom
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 25; 255; 0
+      Enabled: true
+      Name: footprint
+      Topic: /move_base/local_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Class: rviz/Axes
+      Enabled: true
+      Length: 0.5
+      Name: base_footprint
+      Radius: 0.0199999996
+      Reference Frame: odom
+      Value: true
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 117
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 170; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 339
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_safe_front_left
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 331
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_safe_front_right
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /iplus_perception/alert_perception/alert_region_3d
+          Name: alert_3d
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: alert_2d
+          Topic: /iplus_perception/alert_perception/alert_polygon_2d
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 341
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: orlgin_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pallet_down/camera/cloud
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 340
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: select_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /iplus_perception/alert_perception/select_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 340
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: obs_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /iplus_perception/alert_perception/clustered_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+      Enabled: false
+      Name: alert_perception
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_3d
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.300000012
+          Style: Flat Squares
+          Topic: /scan_filtered_3d
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: mmw2
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.200000003
+          Style: Flat Squares
+          Topic: /jzhw/mmw2
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 170; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: mmw1
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /jzhw/mmw1
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /pointcloud_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: false
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 0; 255; 0
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 10
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /pointcloud_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 0
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: clustered_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /clustering/clustered_obstacles_cloud_in_base
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255.026291
+          Min Color: 0; 0; 0
+          Min Intensity: 0.00189781189
+          Name: PointCloud2
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /cartographer_ros/merge_point_cloud
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 170; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_test
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered_test
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: false
+          Name: costmap
+          Topic: /move_base/local_costmap/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: false
+      Enabled: false
+      Name: scan_filtered_3d
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: true
+          Name: back_filt_poly
+          Topic: /scan_emma_nav_back/polys
+          Unreliable: false
+          Value: true
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: true
+          Name: front_flit_poly
+          Topic: /scan_emma_nav_front/polys
+          Unreliable: false
+          Value: true
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 1
+          Name: carrier_link
+          Radius: 0.00999999978
+          Reference Frame: base_carrier
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.200000003
+          Name: Axes_back
+          Radius: 0.0199999996
+          Reference Frame: laser_link2
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.200000003
+          Name: Axes_front
+          Radius: 0.0199999996
+          Reference Frame: laser_link
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1125
+          Min Color: 0; 0; 0
+          Min Intensity: 32
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 127
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 685
+          Min Color: 0; 0; 0
+          Min Intensity: 32
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: depth_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /front/depth/points
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_vertical
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0700000003
+          Style: Flat Squares
+          Topic: /scan_filtered_test
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 170; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_depth_front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered_depth_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: PointCloud
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /safe_laser_collide_point
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: true
+          Name: local_costmap
+          Topic: /move_base/local_costmap/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+        - Alpha: 1
+          Buffer Length: 1
+          Class: rviz/Path
+          Color: 25; 255; 0
+          Enabled: true
+          Head Diameter: 0.300000012
+          Head Length: 0.200000003
+          Length: 0.300000012
+          Line Style: Lines
+          Line Width: 0.0299999993
+          Name: planner_path
+          Offset:
+            X: 0
+            Y: 0
+            Z: 0
+          Pose Color: 255; 85; 255
+          Pose Style: None
+          Radius: 0.0299999993
+          Shaft Diameter: 0.100000001
+          Shaft Length: 0.100000001
+          Topic: /move_base/GlobalPlanner/plan
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: scan_filtered_2d
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 1
+          Name: axes_cam_back
+          Radius: 0.100000001
+          Reference Frame: camera_ast_back
+          Value: false
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 1
+          Name: axes_cam_front
+          Radius: 0.100000001
+          Reference Frame: camera_ast_front
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: -999999
+          Min Color: 0; 0; 0
+          Min Intensity: 999999
+          Name: scan_filtered_depth_front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_filtered_depth_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: -999999
+          Min Color: 0; 0; 0
+          Min Intensity: 999999
+          Name: scan_filtered_depth_back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_filtered_depth_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 30
+          Min Color: 0; 0; 0
+          Min Intensity: 20
+          Name: origin_front_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /camera/depth/points
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 150
+          Min Color: 0; 0; 0
+          Min Intensity: 40
+          Name: origin_back_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /front/pc_in_dc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: -1
+          Min Color: 0; 0; 0
+          Min Intensity: -1
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: -1
+          Min Color: 0; 0; 0
+          Min Intensity: -1
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 20
+          Min Color: 0; 0; 0
+          Min Intensity: 20
+          Name: pc_in_dc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /front/pc_in_dc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+      Enabled: false
+      Name: ScanDepth
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: false
+          Name: scan_filtered_alert_poly
+          Topic: /scan_filtered/info/alert_regions
+          Unreliable: false
+          Value: false
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: false
+          Name: scan_filtered_ignore_poly
+          Topic: /scan_filtered/info/ignored_regions
+          Unreliable: false
+          Value: false
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: false
+          Name: right_ignore
+          Topic: /scan_emma_safe_right/info/ignored_regions
+          Unreliable: false
+          Value: false
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: false
+          Name: right_alert
+          Topic: /scan_emma_safe_right/info/alert_regions
+          Unreliable: false
+          Value: false
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: false
+          Name: left_ignore
+          Topic: /scan_emma_safe_left/info/ignored_regions
+          Unreliable: false
+          Value: false
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: false
+          Name: left_alert
+          Topic: /scan_emma_safe_left/info/alert_regions
+          Unreliable: false
+          Value: false
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: right
+          Topic: /scan_filter_vertical2d/carrier_footprint
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: left
+          Topic: /scan_safer/scan_emma_safe_carrier_left_config_region_0
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: back
+          Topic: /scan_safer/scan_emma_safe_carrier_back_config_region_0
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: front
+          Topic: /scan_safer/scan_emma_safe_carrier_front_config_region_0
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 585
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 584
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 85; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 561
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_safe_front_left
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_safe_front_right
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 127
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_vertical
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /scan_filtered_test
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: false
+          Name: Map
+          Topic: /move_base/local_costmap/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: false
+      Enabled: false
+      Name: scan_safer_2d
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: obs_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.150000006
+          Style: Flat Squares
+          Topic: /clustering/clustered_obstacles_cloud_in_base
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front_left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_front_left
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front_right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_front_right
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: ""
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_3d
+          Position Transformer: ""
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: ""
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: mmw1
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.150000006
+          Style: Flat Squares
+          Topic: /jzhw/mmw1
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: mmw2
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.150000006
+          Style: Flat Squares
+          Topic: /jzhw/mmw2
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_back_left
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_back_right
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+      Enabled: false
+      Name: scan_safer_3d
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.200000003
+          Name: pallet_link
+          Radius: 0.00999999978
+          Reference Frame: pallet_link
+          Value: true
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 3
+          Name: camera_link
+          Radius: 0.00999999978
+          Reference Frame: pallet_link
+          Value: false
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: roi2d
+          Topic: /iplus_perception/pallet_roi
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 2025
+          Min Color: 0; 0; 0
+          Min Intensity: 565
+          Name: scan
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /iplus_perception/pallet_roi3d
+          Name: roi3d
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 2.5
+            Min Value: 0
+            Value: false
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: AxisColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: origin_map_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00300000003
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_origin_map_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 2.5
+            Min Value: 0
+            Value: false
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: AxisColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: live_origin_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00300000003
+          Style: Flat Squares
+          Topic: /pallet/camera/cloud
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 2.5
+            Min Value: 0
+            Value: false
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: AxisColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: replay_origin_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00300000003
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_origin_pcxx
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 170; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: select_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00300000003
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_select_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: outlier_filt_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00499999989
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_normal_filt_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: normal_filt_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_normal_filt_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 5
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: resample_high_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00499999989
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_resample_high_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: resample_low_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_resample_low_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: rough_ransac_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_coarse_ransac_inlier_points
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 127
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: fine_ransac_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00499999989
+          Style: Flat Squares
+          Topic: /iplus_perception/pallet_fine_line_inliers_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Class: rviz/Group
+          Displays:
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /iplus_perception/stack_line
+              Name: stack_line
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: true
+          Enabled: false
+          Name: STACK
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: ""
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 4096
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: match_pc
+              Position Transformer: ""
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/match_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 85; 255; 0
+              Max Intensity: 0
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: normal_filt_pc
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00499999989
+              Style: Flat Squares
+              Topic: /iplus_perception/pallet_normal_filt_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Class: rviz/Group
+              Displays:
+                - Alpha: 1
+                  Autocompute Intensity Bounds: true
+                  Autocompute Value Bounds:
+                    Max Value: 10
+                    Min Value: -10
+                    Value: true
+                  Axis: Z
+                  Channel Name: intensity
+                  Class: rviz/PointCloud2
+                  Color: 85; 255; 0
+                  Color Transformer: FlatColor
+                  Decay Time: 0
+                  Enabled: false
+                  Invert Rainbow: false
+                  Max Color: 255; 255; 255
+                  Max Intensity: 0
+                  Min Color: 0; 0; 0
+                  Min Intensity: 0
+                  Name: fitline_inlier_pc
+                  Position Transformer: XYZ
+                  Queue Size: 10
+                  Selectable: true
+                  Size (Pixels): 3
+                  Size (m): 0.00499999989
+                  Style: Flat Squares
+                  Topic: /iplus_perception/pallet_coarse_line_inliers_pc
+                  Unreliable: false
+                  Use Fixed Frame: true
+                  Use rainbow: true
+                  Value: false
+                - Alpha: 1
+                  Autocompute Intensity Bounds: true
+                  Autocompute Value Bounds:
+                    Max Value: 10
+                    Min Value: -10
+                    Value: true
+                  Axis: Z
+                  Channel Name: intensity
+                  Class: rviz/PointCloud2
+                  Color: 255; 255; 255
+                  Color Transformer: Intensity
+                  Decay Time: 0
+                  Enabled: false
+                  Invert Rainbow: false
+                  Max Color: 255; 255; 255
+                  Max Intensity: 0
+                  Min Color: 0; 0; 0
+                  Min Intensity: 0
+                  Name: project_pc
+                  Position Transformer: XYZ
+                  Queue Size: 10
+                  Selectable: true
+                  Size (Pixels): 3
+                  Size (m): 0.00499999989
+                  Style: Flat Squares
+                  Topic: /iplus_perception/project_coarse_pc
+                  Unreliable: false
+                  Use Fixed Frame: true
+                  Use rainbow: true
+                  Value: false
+              Enabled: false
+              Name: coarse_match
+            - Class: rviz/Group
+              Displays:
+                - Alpha: 1
+                  Autocompute Intensity Bounds: true
+                  Autocompute Value Bounds:
+                    Max Value: 10
+                    Min Value: -10
+                    Value: true
+                  Axis: Z
+                  Channel Name: intensity
+                  Class: rviz/PointCloud2
+                  Color: 255; 0; 255
+                  Color Transformer: FlatColor
+                  Decay Time: 0
+                  Enabled: false
+                  Invert Rainbow: false
+                  Max Color: 255; 255; 255
+                  Max Intensity: 0
+                  Min Color: 0; 0; 0
+                  Min Intensity: 0
+                  Name: fitline_inlier_pc
+                  Position Transformer: XYZ
+                  Queue Size: 10
+                  Selectable: true
+                  Size (Pixels): 3
+                  Size (m): 0.00499999989
+                  Style: Flat Squares
+                  Topic: /iplus_perception/pallet_fine_line_inliers_pc
+                  Unreliable: false
+                  Use Fixed Frame: true
+                  Use rainbow: true
+                  Value: false
+                - Alpha: 1
+                  Autocompute Intensity Bounds: true
+                  Autocompute Value Bounds:
+                    Max Value: 10
+                    Min Value: -10
+                    Value: true
+                  Axis: Z
+                  Channel Name: intensity
+                  Class: rviz/PointCloud2
+                  Color: 255; 255; 0
+                  Color Transformer: FlatColor
+                  Decay Time: 0
+                  Enabled: true
+                  Invert Rainbow: false
+                  Max Color: 255; 255; 255
+                  Max Intensity: 0
+                  Min Color: 0; 0; 0
+                  Min Intensity: 0
+                  Name: project_pc
+                  Position Transformer: XYZ
+                  Queue Size: 10
+                  Selectable: true
+                  Size (Pixels): 3
+                  Size (m): 0.00499999989
+                  Style: Flat Squares
+                  Topic: /iplus_perception/project_fine_pc
+                  Unreliable: false
+                  Use Fixed Frame: true
+                  Use rainbow: true
+                  Value: true
+                - Class: rviz/Axes
+                  Enabled: false
+                  Length: 0.200000003
+                  Name: pallet_link
+                  Radius: 0.0199999996
+                  Reference Frame: pallet_link
+                  Value: false
+                - Class: rviz/Axes
+                  Enabled: false
+                  Length: 0.200000003
+                  Name: pallet_link1
+                  Radius: 0.0199999996
+                  Reference Frame: pallet_link1
+                  Value: false
+                - Class: rviz/Axes
+                  Enabled: false
+                  Length: 0.200000003
+                  Name: pallet_link2
+                  Radius: 0.0199999996
+                  Reference Frame: pallet_link2
+                  Value: false
+              Enabled: true
+              Name: fine_match
+          Enabled: false
+          Name: Match2D
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 100
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: match_result
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/pallet_smooth_match_model_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: false
+          Name: MATCH1D
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 0
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 2
+              Min Color: 0; 0; 0
+              Min Intensity: 2
+              Name: legs_clustered_used_pc
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/pallet_legs_clustered_used_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 0
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: no_leg_plane_pc
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/pallet_no_leg_plane_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 0
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: no_leg_plane_inlier_pc
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/pallet_no_leg_plane_inlier_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 0; 255
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 0
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: legs_clustered_pc
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/pallet_legs_clustered_pc
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Class: rviz/MarkerArray
+              Enabled: false
+              Marker Topic: /iplus_perception/pallet_legs_center
+              Name: legs_center
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: false
+          Enabled: false
+          Name: CLUSTER_METHOD
+        - Class: rviz/Group
+          Displays: ~
+          Enabled: false
+          Name: CLUSTER_MINMAX
+      Enabled: false
+      Name: pallet_perception
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.5
+          Name: back_left
+          Radius: 0.0500000007
+          Reference Frame: lidar_link5
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.5
+          Name: back_right
+          Radius: 0.0500000007
+          Reference Frame: lidar_link4
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 1
+          Name: coarse_pallet_link
+          Radius: 0.100000001
+          Reference Frame: coarse_pallet_link
+          Value: true
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 1
+          Name: fine_pallet_link
+          Radius: 0.0299999993
+          Reference Frame: fine_pallet_link
+          Value: false
+        - Class: jsk_rviz_plugin/BoundingBoxArray
+          Enabled: true
+          Name: boundingbox_in_base
+          Topic: /iplus_perception/corp_boundingbox_array
+          Unreliable: false
+          Value: true
+          alpha: 0.800000012
+          color: 25; 255; 0
+          coloring: Flat color
+          line width: 0.0500000007
+          only edge: true
+          show coords: false
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /iplus_perception/corp_boundingbox_array_in_base
+          Name: roi
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /iplus_perception/base_footprint_expand_boundingbox_array_in_base
+          Name: base_footprint_expand
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 0; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /iplus_perception/left_origin_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /iplus_perception/right_origin_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 127
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: left_crop_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /iplus_perception/left_cropped_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 127
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: right_crop_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /iplus_perception/right_cropped_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 127
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: base_crop_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /iplus_perception/base_cropped_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front_grid_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /iplus_perception/front_grid_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front_picked_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /iplus_perception/front_picked_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 170; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: left_grid_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /iplus_perception/left_grid_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: left_picked_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /iplus_perception/left_picked_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: right_grid_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /iplus_perception/right_grid_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: right_picked_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.150000006
+          Style: Flat Squares
+          Topic: /iplus_perception/right_picked_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /iplus_perception/coarse_ransac_lines
+          Name: coarse_ransac_line
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: left_resample_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /iplus_perception/left_resample_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 85; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: right_resample_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /iplus_perception/right_resample_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front_coarse_resample_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /iplus_perception/left_resample_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /iplus_perception/fine_ransac_lines
+          Name: fine_ransac_line
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+      Enabled: false
+      Name: laser3d_line_perception
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.5
+          Name: sensor_link
+          Radius: 0.0199999996
+          Reference Frame: laser_link
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.25
+          Name: reflective_plate_link
+          Radius: 0.00999999978
+          Reference Frame: reflective_plate_link
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: origin_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1228
+          Min Color: 0; 0; 0
+          Min Intensity: 29
+          Name: outlier_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_outlier_reserve_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: -999999
+          Min Color: 0; 0; 0
+          Min Intensity: 999999
+          Name: roi_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_roi_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 5000
+          Name: intensity_filtered_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_intensity_filt_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/MarkerArray
+          Enabled: false
+          Marker Topic: /iplus_perception/rpp_plate_lines
+          Name: cluster_lines
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 5000
+          Name: outlier_filtered_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_outlier_reserve_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: plate_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_plate_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1229
+          Min Color: 0; 0; 0
+          Min Intensity: 456
+          Name: clusters_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_clustered_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 5000
+          Name: accumulated_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00499999989
+          Style: Flat Squares
+          Topic: /iplus_perception/rpp_accumulated_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: roi_in_map
+          Topic: /iplus_perception/rpp_roi_in_map
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: roi_in_sensor
+          Topic: /iplus_perception/rpp_roi_in_sensor
+          Unreliable: false
+          Value: false
+      Enabled: false
+      Name: refective_plate_perception
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 1
+          Name: base_link
+          Radius: 0.100000001
+          Reference Frame: base_link
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: pcl_viewer_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /cloud_pcd
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+      Enabled: false
+      Name: pcl_viewer
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 255; 0; 255
+          Enabled: true
+          Name: footprint
+          Topic: /costmap_pub_node/costmap_pub_node/footprint
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 255; 0; 255
+          Enabled: true
+          Name: footprint_test
+          Topic: /collision_check_node/collision_check_node/footprint
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1177
+          Min Color: 0; 0; 0
+          Min Intensity: 276
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: ""
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front_2d
+          Position Transformer: ""
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: ""
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: true
+          Name: Map
+          Topic: /costmap_pub_node/costmap_pub_node/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+      Enabled: false
+      Name: costmap_2d
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0299999993
+          Style: Flat Squares
+          Topic: /scan_filtered_test
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: true
+          Name: front_region_filt
+          Topic: /scan_emma_nav_front/polys
+          Unreliable: false
+          Value: true
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: true
+          Name: back_region_filt
+          Topic: /scan_emma_nav_back/polys
+          Unreliable: false
+          Value: true
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.300000012
+          Name: front_axes
+          Radius: 0.0199999996
+          Reference Frame: laser_link
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.300000012
+          Name: back_axes
+          Radius: 0.0199999996
+          Reference Frame: laser_link2
+          Value: true
+      Enabled: false
+      Name: emma_tools
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: fp_cvt
+          Topic: /nav_checker/footprint_cvt
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: laser_safe_adjust_obs_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /safe_laser_collide_point
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_in_cvt_footprint
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /nav_checker/scan_in_footprint_cvt
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+      Enabled: false
+      Name: nav_checker
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_3d
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /scan_filtered_3d
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 0.5
+          Name: back_left
+          Radius: 0.0500000007
+          Reference Frame: lidar_link5
+          Value: false
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 0.5
+          Name: back_right
+          Radius: 0.0500000007
+          Reference Frame: lidar_link4
+          Value: false
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 0.5
+          Name: back
+          Radius: 0.0500000007
+          Reference Frame: lidar_link2
+          Value: false
+        - Class: rviz/Axes
+          Enabled: false
+          Length: 0.5
+          Name: front
+          Radius: 0.0500000007
+          Reference Frame: lidar_link
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /pointcloud_back_left
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /pointcloud_front_right
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 11.3048029
+            Min Value: -0.172134638
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 127
+          Color Transformer: AxisColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 4
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /pointcloud_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 0.300000012
+            Min Value: -0.100000001
+            Value: false
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 127
+          Color Transformer: AxisColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 3
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: cvt_front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /clustering/front/cvt_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: cvt_back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /clustering/back/cvt_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 85; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: obs_front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /clustering/front/obs_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: obs_back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.100000001
+          Style: Flat Squares
+          Topic: /clustering/back/obs_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 127
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 5
+          Name: clustered_raw_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.200000003
+          Style: Flat Squares
+          Topic: /clustering/obs_in_base_raw
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 7
+          Name: clustered_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /clustering/clustered_obstacles_cloud_in_base
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: down_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /clustering/front_right/obs_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Class: rviz/MarkerArray
+          Enabled: false
+          Marker Topic: /clustering/markers_array
+          Name: ids
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: false
+        - Class: rviz/Marker
+          Enabled: true
+          Marker Topic: /clustering/markers
+          Name: boxes
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+      Enabled: false
+      Name: lunar_tools
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 255
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: back
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /pointcloud_back
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 85; 255; 0
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 255
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: front
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.0500000007
+              Style: Flat Squares
+              Topic: /pointcloud_front
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 0; 255
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 255
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: front_remain
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.0500000007
+              Style: Flat Squares
+              Topic: /dynamic_obs_removal_perception/pointcloud_without_dynamic_objects
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 0; 255
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 255
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: front_dynamic_obs
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.0500000007
+              Style: Flat Squares
+              Topic: /dynamic_obs_removal_perception/pointcloud_dynamic_objects
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: false
+          Name: 3D
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/LaserScan
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 255
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: pc_remain
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: false
+              Size (Pixels): 3
+              Size (m): 0.0500000007
+              Style: Flat Squares
+              Topic: /dynamic_obs_removal_perception/laserscan_without_dynamic_objects
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/LaserScan
+              Color: 255; 0; 255
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: -999999
+              Min Color: 0; 0; 0
+              Min Intensity: 999999
+              Name: pc_dynamic
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.0500000007
+              Style: Flat Squares
+              Topic: /dynamic_obs_removal_perception/laserscan_dynamic_objects
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/LaserScan
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 255
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: front
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.0500000007
+              Style: Flat Squares
+              Topic: /scan_emma_nav_front
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: true
+          Name: 2D
+        - Class: rviz/Group
+          Displays: ~
+          Enabled: true
+          Name: depth_camera
+      Enabled: false
+      Name: dynamic_obs_rm
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255.088562
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: cartographer_merge_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /cartographer_ros/merge_point_cloud
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 0; 170; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+      Enabled: false
+      Name: multi_tracking
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: merge_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /ros_data_store/merge_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Axes Length: 0.5
+          Axes Radius: 0.100000001
+          Class: rviz/Pose
+          Color: 255; 25; 0
+          Enabled: true
+          Head Length: 0.300000012
+          Head Radius: 0.100000001
+          Name: nearest_robot_pose
+          Shaft Length: 1
+          Shaft Radius: 0.0500000007
+          Shape: Axes
+          Topic: /nav_checker/nearest_robot_pose
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Buffer Length: 1
+          Class: rviz/Path
+          Color: 25; 255; 0
+          Enabled: true
+          Head Diameter: 0.0199999996
+          Head Length: 0.0199999996
+          Length: 0.5
+          Line Style: Lines
+          Line Width: 0.0299999993
+          Name: plan_path
+          Offset:
+            X: 0
+            Y: 0
+            Z: 0
+          Pose Color: 255; 85; 255
+          Pose Style: Axes
+          Radius: 0.00999999978
+          Shaft Diameter: 0.0199999996
+          Shaft Length: 0.5
+          Topic: /move_base/controller/task_plan
+          Unreliable: false
+          Value: true
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Class: rviz/PointStamped
+              Color: 204; 41; 204
+              Enabled: true
+              History Length: 1
+              Name: path_collision_point
+              Radius: 0.200000003
+              Topic: /nav_checker/path_collision_point
+              Unreliable: false
+              Value: true
+            - Alpha: 1
+              Axes Length: 1
+              Axes Radius: 0.100000001
+              Class: rviz/Pose
+              Color: 255; 25; 0
+              Enabled: true
+              Head Length: 0.300000012
+              Head Radius: 0.100000001
+              Name: path_collision_pose
+              Shaft Length: 1
+              Shaft Radius: 0.0500000007
+              Shape: Arrow
+              Topic: /nav_checker/path_collision_pose
+              Unreliable: false
+              Value: true
+            - Alpha: 1
+              Class: rviz/Polygon
+              Color: 25; 255; 0
+              Enabled: true
+              Name: path_collision_footprint
+              Topic: /nav_checker/path_collision_footprint
+              Unreliable: false
+              Value: true
+          Enabled: false
+          Name: path_check
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Class: rviz/Polygon
+              Color: 25; 255; 0
+              Enabled: true
+              Name: fcw_footprint
+              Topic: /nav_checker/path_collision_footprint
+              Unreliable: false
+              Value: true
+          Enabled: false
+          Name: fcw_check
+        - Class: rviz/Group
+          Displays: ~
+          Enabled: false
+          Name: cvt_check
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Class: rviz/PointStamped
+              Color: 204; 41; 204
+              Enabled: true
+              History Length: 1
+              Name: rotate_collision_point
+              Radius: 0.200000003
+              Topic: /nav_checker/turntable_collision_point
+              Unreliable: false
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: Intensity
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 3
+              Min Color: 0; 0; 0
+              Min Intensity: 0
+              Name: rotate_potential_collision_points
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.100000001
+              Style: Flat Squares
+              Topic: /nav_checker/rotate_potential_collision_points
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: true
+          Name: rotate_check
+      Enabled: false
+      Name: nav_checker
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 7910
+          Min Color: 0; 0; 0
+          Min Intensity: 536
+          Name: front_left
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_safe_front_left
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5764
+          Min Color: 0; 0; 0
+          Min Intensity: 634
+          Name: front_right
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_safe_front_right
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_3d
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered_3d
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back_nav
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: ""
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_vertical
+          Position Transformer: ""
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: ""
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: depth_camera
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /front/depth/points
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 1
+          Name: pointcloud_front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /pointcloud_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: ""
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: ""
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: ""
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: ""
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_depth_front
+          Position Transformer: ""
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: ""
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+      Enabled: false
+      Name: wuhan_bp
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: true
+          Name: back_filt_poly
+          Topic: /scan_emma_nav_back/polys
+          Unreliable: false
+          Value: true
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Alpha: 1
+          Class: jsk_rviz_plugin/PolygonArray
+          Color: 25; 255; 0
+          Enabled: true
+          Name: front_flit_poly
+          Topic: /scan_emma_nav_front/polys
+          Unreliable: false
+          Value: true
+          coloring: Auto
+          enable lighting: true
+          normal length: 0.100000001
+          only border: true
+          show normal: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.200000003
+          Name: Axes_back
+          Radius: 0.0250000004
+          Reference Frame: laser_link2
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.200000003
+          Name: Axes_front
+          Radius: 0.0250000004
+          Reference Frame: laser_link
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: false
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 127
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 584
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_emma_nav_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 554
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_test
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered_test
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+      Enabled: false
+      Name: load_shelf
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered_test
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered_test
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: region_ignore_in_base
+          Topic: /scan_filter/region_ignore
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: outdoor_side_safe
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: footprint
+          Topic: /move_base/local_costmap/footprint
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1294
+          Min Color: 0; 0; 0
+          Min Intensity: 22
+          Name: origin_scan
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: origin_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/l2ip_origin_scan
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 0; 255; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: collect_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/l2ip_collect_scans
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.300000012
+          Name: shelf_link
+          Radius: 0.0500000007
+          Reference Frame: shelf_link
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 1
+          Name: odom
+          Radius: 0.100000001
+          Reference Frame: odom
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: roi_in_odom
+          Topic: /iplus_perception/l2ip_roi_in_odom
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: laser2image_perception
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 1
+          Name: cur_link
+          Radius: 0.100000001
+          Reference Frame: base_footprint
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 1
+          Name: ref_link
+          Radius: 0.100000001
+          Reference Frame: icp3d_matching_ref_link
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255.070999
+          Min Color: 0; 0; 0
+          Min Intensity: 1.50203996e-05
+          Name: correct_ref_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /icp3d_matching_ref_point_cloud2_modify
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 0; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255.070999
+          Min Color: 0; 0; 0
+          Min Intensity: 1.50203996e-05
+          Name: ref_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /icp3d_matching_ref_point_cloud2
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255.009735
+          Min Color: 0; 0; 0
+          Min Intensity: 0.000231981277
+          Name: cur_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /icp3d_matching_cur_point_cloud2
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 174
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: back
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /pointcloud_back
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 255
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: front
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /pointcloud_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+      Enabled: false
+      Name: laser3d_perception
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Axes Length: 1
+          Axes Radius: 0.100000001
+          Class: rviz/Pose
+          Color: 255; 25; 0
+          Enabled: true
+          Head Length: 0.300000012
+          Head Radius: 0.100000001
+          Name: goal
+          Shaft Length: 1
+          Shaft Radius: 0.0500000007
+          Shape: Arrow
+          Topic: /ibvs_constrained/safe_goal
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud
+          Color: 255; 0; 0
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: obs_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /ibvs_constrained/safe_obs_pc
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: FlatColor
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan_filtered
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0199999996
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 255; 255; 0
+          Enabled: true
+          Name: cur_fp
+          Topic: /ibvs_constrained/safe_footprint_current
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 255; 0; 0
+          Enabled: true
+          Name: check_fp
+          Topic: /ibvs_constrained/safe_footprint_check
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 255; 0; 255
+          Enabled: true
+          Name: lateral_cur_fp
+          Topic: /ibvs_constrained/safe_lateral_footprint_current
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 255; 170; 127
+          Enabled: true
+          Name: lateral_check_fp
+          Topic: /ibvs_constrained/safe_lateral_footprint_check
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: laser_safe_check_in_ibvs
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: false
+          Name: footprint
+          Topic: /costmap_pub_node/costmap_pub_node/footprint
+          Unreliable: false
+          Value: false
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 0
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_filtered
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: true
+          Name: Map
+          Topic: /grid_map
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /people_status_visualization
+          Name: people_status
+          Namespaces:
+            arrow: true
+            box2d: true
+            box_center: true
+          Queue Size: 100
+          Value: true
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: predict_polygon
+          Topic: /predict_region
+          Unreliable: false
+          Value: true
+      Enabled: true
+      Name: costmap_pub_node
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: footprint
+          Topic: /costmap_sub_node/footprint_test
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 1111
+          Min Color: 0; 0; 0
+          Min Intensity: 432
+          Name: scan
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.0500000007
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: true
+          Name: Map
+          Topic: /costmap_sub_node/costmap_sub_node/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+      Enabled: false
+      Name: costmap_sub_node
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: footprint
+          Topic: ""
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: ""
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 4096
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan
+          Position Transformer: ""
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: ""
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: map
+          Draw Behind: false
+          Enabled: true
+          Name: Map
+          Topic: ""
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+      Enabled: false
+      Name: costmap_lib_node
+    - Class: rviz/Group
+      Displays:
+        - Angle Tolerance: 0.100000001
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: false
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: true
+          Enabled: true
+          Keep: 100
+          Name: filtered_Odometry
+          Position Tolerance: 0.100000001
+          Shape:
+            Alpha: 1
+            Axes Length: 0.200000003
+            Axes Radius: 0.00999999978
+            Color: 255; 25; 0
+            Head Length: 0.300000012
+            Head Radius: 0.100000001
+            Shaft Length: 1
+            Shaft Radius: 0.0500000007
+            Value: Axes
+          Topic: /odometry/filtered
+          Unreliable: false
+          Value: true
+        - Angle Tolerance: 0.100000001
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: true
+          Enabled: true
+          Keep: 100
+          Name: raw_Odometry
+          Position Tolerance: 0.100000001
+          Shape:
+            Alpha: 1
+            Axes Length: 1
+            Axes Radius: 0.100000001
+            Color: 255; 25; 0
+            Head Length: 0.300000012
+            Head Radius: 0.100000001
+            Shaft Length: 1
+            Shaft Radius: 0.0500000007
+            Value: Axes
+          Topic: /husky_velocity_controller/odom
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: EKF
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: roi_in_map
+          Topic: /iplus_perception/dmp/roi_in_map_d
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: dot_marker_perception
+    - Class: rviz/Group
+      Displays:
+        - Angle Tolerance: 0.00999999978
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: false
+          Enabled: false
+          Keep: 0
+          Name: Odometry
+          Position Tolerance: 0.00999999978
+          Shape:
+            Alpha: 1
+            Axes Length: 0.100000001
+            Axes Radius: 0.00999999978
+            Color: 255; 25; 0
+            Head Length: 0.100000001
+            Head Radius: 0.699999988
+            Shaft Length: 1
+            Shaft Radius: 0.00999999978
+            Value: Axes
+          Topic: /emma_odom
+          Unreliable: false
+          Value: false
+        - Angle Tolerance: 0.100000001
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: false
+          Enabled: false
+          Keep: 0
+          Name: Odometry
+          Position Tolerance: 0.100000001
+          Shape:
+            Alpha: 1
+            Axes Length: 0.100000001
+            Axes Radius: 0.00999999978
+            Color: 255; 25; 0
+            Head Length: 0.300000012
+            Head Radius: 0.100000001
+            Shaft Length: 1
+            Shaft Radius: 0.0500000007
+            Value: Axes
+          Topic: /odometry/filtered
+          Unreliable: false
+          Value: false
+        - Angle Tolerance: 0.00100000005
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: false
+          Enabled: true
+          Keep: 0
+          Name: cb2rb_in_odom
+          Position Tolerance: 0.00100000005
+          Shape:
+            Alpha: 1
+            Axes Length: 0.100000001
+            Axes Radius: 0.00200000009
+            Color: 255; 25; 0
+            Head Length: 0.300000012
+            Head Radius: 0.100000001
+            Shaft Length: 1
+            Shaft Radius: 0.0500000007
+            Value: Axes
+          Topic: /iplus_perception/fp/pose/cb2rb_in_odom
+          Unreliable: false
+          Value: true
+        - Angle Tolerance: 0.00100000005
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: false
+          Enabled: false
+          Keep: 0
+          Name: cb2rb_in_pose_arrow
+          Position Tolerance: 0.00100000005
+          Shape:
+            Alpha: 1
+            Axes Length: 0.100000001
+            Axes Radius: 0.00999999978
+            Color: 255; 25; 0
+            Head Length: 0.00999999978
+            Head Radius: 0.00499999989
+            Shaft Length: 0.100000001
+            Shaft Radius: 0.00200000009
+            Value: Arrow
+          Topic: /iplus_perception/fp/pose/cb2rb_in_pose
+          Unreliable: false
+          Value: false
+        - Angle Tolerance: 0.00100000005
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: false
+          Enabled: false
+          Keep: 0
+          Name: cb2rb_in_filtered
+          Position Tolerance: 0.00100000005
+          Shape:
+            Alpha: 1
+            Axes Length: 0.300000012
+            Axes Radius: 0.00300000003
+            Color: 255; 25; 0
+            Head Length: 0.300000012
+            Head Radius: 0.100000001
+            Shaft Length: 1
+            Shaft Radius: 0.0500000007
+            Value: Axes
+          Topic: /iplus_perception/fp/pose/cb2rb_filtered
+          Unreliable: false
+          Value: false
+        - Angle Tolerance: 0.00100000005
+          Class: rviz/Odometry
+          Covariance:
+            Orientation:
+              Alpha: 0.5
+              Color: 255; 255; 127
+              Color Style: Unique
+              Frame: Local
+              Offset: 1
+              Scale: 1
+              Value: true
+            Position:
+              Alpha: 0.300000012
+              Color: 204; 51; 204
+              Scale: 1
+              Value: true
+            Value: false
+          Enabled: true
+          Keep: 0
+          Name: cb2rb_in_pose_axe
+          Position Tolerance: 0.00100000005
+          Shape:
+            Alpha: 1
+            Axes Length: 0.200000003
+            Axes Radius: 0.00200000009
+            Color: 255; 25; 0
+            Head Length: 0.00999999978
+            Head Radius: 0.00499999989
+            Shaft Length: 0.100000001
+            Shaft Radius: 0.00200000009
+            Value: Axes
+          Topic: /iplus_perception/fp/pose/cb2rb_in_pose
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: robot_localization
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/PointCloud2
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: true
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: ceres_ipput_pc
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /iplus_perception/shelf_perception/ceres_input_pcs
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: true
+        - Alpha: 1
+          Autocompute Intensity Bounds: true
+          Autocompute Value Bounds:
+            Max Value: 10
+            Min Value: -10
+            Value: true
+          Axis: Z
+          Channel Name: intensity
+          Class: rviz/LaserScan
+          Color: 255; 255; 255
+          Color Transformer: Intensity
+          Decay Time: 0
+          Enabled: false
+          Invert Rainbow: false
+          Max Color: 255; 255; 255
+          Max Intensity: 5000
+          Min Color: 0; 0; 0
+          Min Intensity: 0
+          Name: scan
+          Position Transformer: XYZ
+          Queue Size: 10
+          Selectable: true
+          Size (Pixels): 3
+          Size (m): 0.00999999978
+          Style: Flat Squares
+          Topic: /scan_emma_nav_front
+          Unreliable: false
+          Use Fixed Frame: true
+          Use rainbow: true
+          Value: false
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 25; 255; 0
+          Enabled: true
+          Name: roi_in_map
+          Topic: /iplus_perception/shelf_perception/roi_in_map
+          Unreliable: false
+          Value: true
+        - Class: rviz/Axes
+          Enabled: true
+          Length: 0.200000003
+          Name: shelf_link
+          Radius: 0.00999999978
+          Reference Frame: shelf_link
+          Value: true
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Class: rviz/Polygon
+              Color: 25; 255; 0
+              Enabled: true
+              Name: optimize_shelf_rect
+              Topic: /iplus_perception/shelf_perception/result_legs_in_odom
+              Unreliable: false
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10
+                Min Value: -10
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 250
+              Min Color: 0; 0; 0
+              Min Intensity: 227
+              Name: opti_input_pc
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.00999999978
+              Style: Flat Squares
+              Topic: /iplus_perception/shelf_perception/ceres_input_pcs
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: true
+          Name: optimize
+      Enabled: false
+      Name: shelf_perception
+  Enabled: true
+  Global Options:
+    Background Color: 0; 0; 0
+    Default Light: true
+    Fixed Frame: odom
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Angle: 0.0049997028
+      Class: rviz/TopDownOrtho
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Scale: 309.581665
+      Target Frame: odom
+      Value: TopDownOrtho (rviz)
+      X: 0.981597722
+      Y: 0.791081727
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 804
+  Hide Left Dock: false
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000029dfc020000000afb000000100044006900730070006c0061007900730100000028000001c8000000d700fffffffb0000001200530065006c0065006300740069006f006e01000001f6000000cf0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001c100000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d006100670065020000049c0000017500000216000001c1fb0000000a0049006d0061006700650200000428000001820000028a000001b400000001000001100000029dfc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007300000000280000029d000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000735000000d7fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004140000003bfc0100000002fb0000000800540069006d00650100000000000004140000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000002a40000029d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 1044
+  X: 672
+  Y: 35

@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 11:11:56
+ * @LastEditTime: 2025-04-09 11:16:40
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -234,9 +234,6 @@ int main(int argc, char *argv[]) {
       nh.advertise<nav_msgs::OccupancyGrid>("/grid_map", 1);
   ros::Publisher marker_pub = nh.advertise<visualization_msgs::MarkerArray>(
       "/people_status_visualization", 10);
-  ros::Publisher predict_marker_pub =
-      nh.advertise<visualization_msgs::MarkerArray>(
-          "/predict_end_status_visualization", 10);
   ros::Publisher polygon_pub =
       nh.advertise<geometry_msgs::PolygonStamped>("predict_region", 1);
 
@@ -308,7 +305,7 @@ int main(int argc, char *argv[]) {
   auto box2d = drawBox2d(header, center_x, center_y, theta, width, height, 0);
   auto box2d_center = drawBoxCenter(header, center_x, center_y, 1);
 
-  visualization_msgs::MarkerArray marker_array, predict_marker_array;
+  visualization_msgs::MarkerArray marker_array;
   marker_array.markers.push_back(box2d);
   marker_array.markers.push_back(box2d_center);
   marker_array.markers.push_back(velocity_arrow);
@@ -320,8 +317,8 @@ int main(int argc, char *argv[]) {
 
   box2d = drawBox2d(header, pred_x, pred_y, theta, width, height, 3);
   box2d_center = drawBoxCenter(header, pred_x, pred_y, 4);
-  predict_marker_array.markers.push_back(box2d);
-  predict_marker_array.markers.push_back(box2d_center);
+  marker_array.markers.push_back(box2d);
+  marker_array.markers.push_back(box2d_center);
 
   auto end_person2odom = cur_person2odom;
   end_person2odom.translation() = Eigen::Vector3d(pred_x, pred_y, 0.0);
@@ -395,7 +392,6 @@ int main(int argc, char *argv[]) {
   while (ros::ok()) {
     map_pub.publish(map);
     marker_pub.publish(marker_array);
-    predict_marker_pub.publish(predict_marker_array);
     polygon_pub.publish(polygon);
   }
 
