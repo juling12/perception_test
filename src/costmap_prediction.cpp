@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 11:16:40
+ * @LastEditTime: 2025-04-09 11:26:41
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -133,38 +133,6 @@ bool worldToMap(double wx, double wy, unsigned int &mx, unsigned int &my,
 }
 
 /**
- * @brief 计算odom坐标系下box的四个角点
- */
-std::vector<geometry_msgs::Point32> getBoxCorners(
-    const Eigen::Affine3d &person2odom, const double box_width,
-    const double box_height) {
-  auto center_x = person2odom.translation().x();
-  auto center_y = person2odom.translation().y();
-  auto theta = person2odom.rotation().eulerAngles(2, 1, 0)[0];
-
-  double w = box_width * 0.5;
-  double h = box_height * 0.5;
-
-  std::vector<geometry_msgs::Point32> corners;
-  std::vector<std::pair<double, double>> local_corners = {
-      {w, h}, {-w, h}, {-w, -h}, {w, -h}};
-
-  for (size_t i = 0; i < local_corners.size(); ++i) {
-    Eigen::Vector3d local_pt(local_corners[i].first, local_corners[i].second,
-                             0.0);
-    // LOG(INFO) << "local_pt: " << local_pt.transpose();
-    auto odom_pt = person2odom * local_pt;
-    // LOG(INFO) << "odom_pt: " << odom_pt.transpose();
-    geometry_msgs::Point32 pt;
-    pt.x = odom_pt.x();
-    pt.y = odom_pt.y();
-    pt.z = 0.0;
-    corners.push_back(pt);
-  }
-  return corners;
-}
-
-/**
  * @brief 计算角点的最大最小值
  */
 std::tuple<double, double, double, double> getBoxMinMax(
@@ -201,7 +169,7 @@ std::tuple<double, double, double, double> getBoxMinMax(
 }
 
 /**
- * @brief 计算person坐标系下四个角点
+ * @brief 计算person坐标系下预测区域的四个角点
  */
 std::vector<cv::Point2d> getCorners(const PersonState &person_state,
                                     const double &delta_t) {
@@ -281,13 +249,12 @@ int main(int argc, char *argv[]) {
   auto vy = person_state.vy;
   LOG(INFO) << "theta: " << theta << ", theta(degree): " << theta * 180 / M_PI;
 
-  Eigen::Affine3d cur_person2odom = Eigen::Affine3d::Identity();
-  cur_person2odom.translation() = Eigen::Vector3d(center_x, center_y, 0.0);
+  Eigen::Affine3d person2odom = Eigen::Affine3d::Identity();
+  person2odom.translation() = Eigen::Vector3d(center_x, center_y, 0.0);
   Eigen::Quaterniond q(Eigen::AngleAxisd(theta, Eigen::Vector3d::UnitZ()));
-  cur_person2odom.linear() = q.toRotationMatrix();
-  // LOG(INFO) << "cur_person2odom trans: " <<
-  // cur_person2odom.translation().transpose(); LOG(INFO) << "euler: " <<
-  // cur_person2odom.rotation().eulerAngles(2, 1, 0);
+  person2odom.linear() = q.toRotationMatrix();
+  LOG(INFO) << "person2odom trans: " << person2odom.translation().transpose()
+            << ", euler: " << person2odom.rotation().eulerAngles(2, 1, 0);
 
   // 可视化人腿信息
   std_msgs::Header header;
@@ -320,9 +287,6 @@ int main(int argc, char *argv[]) {
   marker_array.markers.push_back(box2d);
   marker_array.markers.push_back(box2d_center);
 
-  auto end_person2odom = cur_person2odom;
-  end_person2odom.translation() = Eigen::Vector3d(pred_x, pred_y, 0.0);
-
   // 计算边界框范围
   auto corners = getCorners(person_state, 2);
 
@@ -331,7 +295,7 @@ int main(int argc, char *argv[]) {
   polygon.header = header;
   for (const auto &pt : corners) {
     Eigen::Vector3d local_pt(pt.x, pt.y, 0.0);
-    auto odom_pt = cur_person2odom * local_pt;
+    auto odom_pt = person2odom * local_pt;
     geometry_msgs::Point32 p;
     p.x = odom_pt.x();
     p.y = odom_pt.y();
