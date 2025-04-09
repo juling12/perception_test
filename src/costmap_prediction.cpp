@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 11:26:41
+ * @LastEditTime: 2025-04-09 13:59:34
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -304,13 +304,13 @@ int main(int argc, char *argv[]) {
     odom_corners.push_back(cv::Point2d{p.x, p.y});
   }
 
-  auto min_max = getBoxMinMax(odom_corners);
-  double min_x = std::get<0>(min_max);
-  double min_y = std::get<1>(min_max);
-  double max_x = std::get<2>(min_max);
-  double max_y = std::get<3>(min_max);
-  LOG(INFO) << "min_x: " << min_x << ", min_y: " << min_y
-            << ", max_x: " << max_x << ", max_y: " << max_y;
+  // auto min_max = getBoxMinMax(odom_corners);
+  // double min_x = std::get<0>(min_max);
+  // double min_y = std::get<1>(min_max);
+  // double max_x = std::get<2>(min_max);
+  // double max_y = std::get<3>(min_max);
+  // LOG(INFO) << "min_x: " << min_x << ", min_y: " << min_y
+  //           << ", max_x: " << max_x << ", max_y: " << max_y;
 
   // 转换为map坐标
   auto resolution = map.info.resolution;
