@@ -1,0 +1,409 @@
+/*
+ * @Author: juling julinger@qq.com
+ * @Date: 2025-04-07 16:58:16
+ * @LastEditors: juling julinger@qq.com
+ * @LastEditTime: 2025-04-09 09:36:29
+ */
+#include <geometry_msgs/Point32.h>
+#include <geometry_msgs/PolygonStamped.h>
+#include <glog/logging.h>
+#include <tf/transform_datatypes.h>
+#include <visualization_msgs/Marker.h>
+#include <visualization_msgs/MarkerArray.h>
+
+#include <Eigen/Dense>
+#include <algorithm>
+#include <opencv2/opencv.hpp>
+
+#include "nav_msgs/OccupancyGrid.h"
+#include "ros/ros.h"
+#include "sensor_msgs/LaserScan.h"
+
+struct PersonState {
+  uint id;
+  float x;
+  float y;
+  float vx;
+  float vy;
+  float height;
+  float width;
+};
+
+/**
+ * @brief 绘制厚度很小的CUBE作为2d的box
+ */
+visualization_msgs::Marker drawBox2d(
+    const std_msgs::Header &header, const float &box_center_x,
+    const float &box_center_y, const float &box_theta, const float &box_height,
+    const float &box_width, const int &marker_id,
+    std_msgs::ColorRGBA marker_color = [] {
+      std_msgs::ColorRGBA c;
+      c.r = 1.0;
+      c.g = 0.0;
+      c.b = 0.0;
+      c.a = 0.6;
+      return c;
+    }()) {
+  visualization_msgs::Marker box;
+  box.header.frame_id = header.frame_id;
+  box.header.stamp = header.stamp;
+  box.ns = "box2d";
+  box.id = marker_id;
+  box.type = visualization_msgs::Marker::CUBE;
+  box.action = visualization_msgs::Marker::ADD;
+  box.pose.position.x = box_center_x;
+  box.pose.position.y = box_center_y;
+  box.pose.position.z = 0;
+  box.pose.orientation = tf::createQuaternionMsgFromYaw(box_theta);
+  box.scale.x = box_height;
+  box.scale.y = box_width;
+  box.scale.z = 0.01;
+  box.color = marker_color;
+  return box;
+}
+
+/**
+ * @brief 绘制box的中心点
+ */
+visualization_msgs::Marker drawBoxCenter(
+    const std_msgs::Header &header, const float &center_x,
+    const float &center_y, const int &marker_id,
+    std_msgs::ColorRGBA marker_color = [] {
+      std_msgs::ColorRGBA c;
+      c.r = 0.0;
+      c.g = 0.0;
+      c.b = 1.0;
+      c.a = 1.0;
+      return c;
+    }()) {
+  visualization_msgs::Marker center;
+  center.header = header;
+  center.ns = "box_center";
+  center.id = marker_id;
+  center.type = visualization_msgs::Marker::SPHERE;
+  center.action = visualization_msgs::Marker::ADD;
+  center.pose.position.x = center_x;
+  center.pose.position.y = center_y;
+  center.pose.position.z = 0.01;
+  center.scale.x = 0.02;
+  center.scale.y = 0.02;
+  center.scale.z = 0.01;
+  center.color = marker_color;
+  return center;
+}
+
+/**
+ * @brief 绘制箭头
+ */
+visualization_msgs::Marker drawArrow(
+    const std_msgs::Header &header, const geometry_msgs::Point &start_point,
+    const geometry_msgs::Point &end_point, const int &marker_id,
+    std_msgs::ColorRGBA marker_color = [] {
+      std_msgs::ColorRGBA c;
+      c.r = 0.0;
+      c.g = 1.0;
+      c.b = 0.0;
+      c.a = 1.0;
+      return c;
+    }()) {
+  visualization_msgs::Marker arrow;
+  arrow.header = header;
+  arrow.ns = "arrow";
+  arrow.id = marker_id;
+  arrow.type = visualization_msgs::Marker::ARROW;
+  arrow.action = visualization_msgs::Marker::ADD;
+  arrow.scale.x = 0.01;
+  arrow.scale.y = 0.02;
+  arrow.color = marker_color;
+  arrow.points.push_back(start_point);
+  arrow.points.push_back(end_point);
+  return arrow;
+}
+
+bool worldToMap(double wx, double wy, unsigned int &mx, unsigned int &my,
+                double origin_x, double origin_y, double resolution,
+                int map_width, int map_height) {
+  if (wx < origin_x || wy < origin_y) return false;
+  mx = (int)((wx - origin_x) / resolution);
+  my = (int)((wy - origin_y) / resolution);
+
+  if (mx < map_width && my < map_height) return true;
+
+  return false;
+}
+
+/**
+ * @brief 计算odom坐标系下box的四个角点
+ */
+std::vector<geometry_msgs::Point32> getBoxCorners(
+    const Eigen::Affine3d &person2odom, const double box_width,
+    const double box_height) {
+  auto center_x = person2odom.translation().x();
+  auto center_y = person2odom.translation().y();
+  auto theta = person2odom.rotation().eulerAngles(2, 1, 0)[0];
+
+  double w = box_width * 0.5;
+  double h = box_height * 0.5;
+
+  std::vector<geometry_msgs::Point32> corners;
+  std::vector<std::pair<double, double>> local_corners = {
+      {w, h}, {-w, h}, {-w, -h}, {w, -h}};
+
+  for (size_t i = 0; i < local_corners.size(); ++i) {
+    Eigen::Vector3d local_pt(local_corners[i].first, local_corners[i].second,
+                             0.0);
+    // LOG(INFO) << "local_pt: " << local_pt.transpose();
+    auto odom_pt = person2odom * local_pt;
+    // LOG(INFO) << "odom_pt: " << odom_pt.transpose();
+    geometry_msgs::Point32 pt;
+    pt.x = odom_pt.x();
+    pt.y = odom_pt.y();
+    pt.z = 0.0;
+    corners.push_back(pt);
+  }
+  return corners;
+}
+
+/**
+ * @brief 计算角点的最大最小值
+ */
+std::tuple<double, double, double, double> getBoxMinMax(
+    const std::vector<geometry_msgs::Point32> &corners) {
+  double min_x = corners[0].x, max_x = corners[0].x;
+  double min_y = corners[0].y, max_y = corners[0].y;
+
+  for (const auto &pt : corners) {
+    min_x = std::min(min_x, static_cast<double>(pt.x));
+    max_x = std::max(max_x, static_cast<double>(pt.x));
+    min_y = std::min(min_y, static_cast<double>(pt.y));
+    max_y = std::max(max_y, static_cast<double>(pt.y));
+  }
+
+  return std::make_tuple(min_x, min_y, max_x, max_y);
+}
+
+/**
+ * @brief 计算person坐标系下最终四个角点
+ */
+std::vector<geometry_msgs::Point32> getCorners(const PersonState &person_state,
+                                               const double &delta_t) {
+  auto center_x = person_state.x;
+  auto center_y = person_state.y;
+  auto theta = atan2(person_state.vy, person_state.vx);
+  auto box_width = person_state.width;
+  auto box_height = person_state.height;
+  auto v = std::hypot(person_state.vx, person_state.vy);
+
+  double w = box_width * 0.5;
+  double h = box_height * 0.5;
+  std::vector<cv::Point2d> local_corners = {{w, h}, {-w, h}, {-w, -h}, {w, -h}};
+  std::vector<geometry_msgs::Point32> corners;
+  for (auto &pt : local_corners) {
+    corners.emplace_back(pt);
+    pt.x = pt.x + v * delta_t;
+    corners.emplace_back(pt);
+  }
+
+  auto min_max = getBoxMinMax(corners);
+  double min_x = std::get<0>(min_max);
+  double min_y = std::get<1>(min_max);
+  double max_x = std::get<2>(min_max);
+  double max_y = std::get<3>(min_max);
+
+  geometry_msgs::Point32 p1, p2, p3, p4;
+  p1.x = min_x;
+  p1.y = min_y;
+  p2.x = max_x;
+  p2.y = min_y;
+  p3.x = max_x;
+  p3.y = max_y;
+  p4.x = min_x;
+  p4.y = max_y;
+
+  return corners;
+}
+
+int main(int argc, char *argv[]) {
+  ros::init(argc, argv, "gridMap");
+  ros::NodeHandle nh;
+  ros::Publisher map_pub =
+      nh.advertise<nav_msgs::OccupancyGrid>("/grid_map", 1);
+  ros::Publisher new_map_pub =
+      nh.advertise<nav_msgs::OccupancyGrid>("/new_grid_map", 1);
+  ros::Publisher marker_pub = nh.advertise<visualization_msgs::MarkerArray>(
+      "/people_status_visualization", 10);
+  ros::Publisher predict_marker_pub =
+      nh.advertise<visualization_msgs::MarkerArray>(
+          "/predict_end_status_visualization", 10);
+  ros::Publisher polygon_pub =
+      nh.advertise<geometry_msgs::PolygonStamped>("predict_region", 1);
+
+  nav_msgs::OccupancyGrid map;
+  map.header.frame_id = "odom";
+  map.header.stamp = ros::Time::now();
+  map.info.resolution = 0.1;  // float32
+  map.info.width = 100;       // uint32
+  map.info.height = 100;      // uint32
+  map.info.origin.position.x = 0.2;
+  map.info.origin.position.y = 0.6;
+  map.info.origin.position.z = 0.0;
+  map.info.origin.orientation.x = 0.0;
+  map.info.origin.orientation.y = 0.0;
+  map.info.origin.orientation.z = 0.0;
+  map.info.origin.orientation.w = 0.0;
+
+  auto size = map.info.width * map.info.height;
+  int p[size] = {0};  // [0,100]
+  p[0] = 80;
+  p[10] = 50;
+  p[15] = 100;
+  p[20] = 10;
+  p[19] = 20;
+  p[49 * map.info.height + 49] = 100;
+  std::vector<signed char> a(p, p + size);
+  map.data = a;
+
+  // odom下的人腿信息
+  PersonState person_state;
+  person_state.id = 0;
+  person_state.x = 0.5;
+  person_state.y = 1.0;
+  person_state.vx = 0.1;
+  person_state.vy = 0.2;
+  person_state.height = 0.3;
+  person_state.width = 0.1;
+
+  auto center_x = person_state.x;
+  auto center_y = person_state.y;
+  auto theta = atan2(person_state.vy, person_state.vx);
+  auto height = person_state.height;
+  auto width = person_state.width;
+  auto vx = person_state.vx;
+  auto vy = person_state.vy;
+  LOG(INFO) << "theta: " << theta << ", theta(degree): " << theta * 180 / M_PI;
+
+  Eigen::Affine3d cur_person2odom = Eigen::Affine3d::Identity();
+  cur_person2odom.translation() = Eigen::Vector3d(center_x, center_y, 0.0);
+  Eigen::Quaterniond q(Eigen::AngleAxisd(theta, Eigen::Vector3d::UnitZ()));
+  cur_person2odom.linear() = q.toRotationMatrix();
+  // LOG(INFO) << "cur_person2odom trans: " <<
+  // cur_person2odom.translation().transpose(); LOG(INFO) << "euler: " <<
+  // cur_person2odom.rotation().eulerAngles(2, 1, 0);
+
+  // 可视化人腿信息
+  std_msgs::Header header;
+  header.frame_id = "odom";
+  header.stamp = ros::Time::now();
+
+  geometry_msgs::Point start_point, end_point;
+  start_point.x = center_x;
+  start_point.y = center_y;
+  start_point.z = 0.01;
+  end_point.x = center_x + vx * 1;
+  end_point.y = center_y + vy * 1;
+  end_point.z = 0.01;
+  auto velocity_arrow = drawArrow(header, start_point, end_point, 2);
+  auto box2d = drawBox2d(header, center_x, center_y, theta, width, height, 0);
+  auto box2d_center = drawBoxCenter(header, center_x, center_y, 1);
+
+  visualization_msgs::MarkerArray marker_array, predict_marker_array;
+  marker_array.markers.push_back(box2d);
+  marker_array.markers.push_back(box2d_center);
+  marker_array.markers.push_back(velocity_arrow);
+
+  // 预测2s
+  double pred_x = center_x + vx * 2;
+  double pred_y = center_y + vy * 2;
+  LOG(INFO) << "pred_x: " << pred_x << ", pred_y: " << pred_y;
+
+  box2d = drawBox2d(header, pred_x, pred_y, theta, width, height, 3);
+  box2d_center = drawBoxCenter(header, pred_x, pred_y, 4);
+  predict_marker_array.markers.push_back(box2d);
+  predict_marker_array.markers.push_back(box2d_center);
+
+  auto end_person2odom = cur_person2odom;
+  end_person2odom.translation() = Eigen::Vector3d(pred_x, pred_y, 0.0);
+
+  // 计算边界框范围
+  std::vector<geometry_msgs::Point32> corners;
+  auto origin_corners = getBoxCorners(cur_person2odom, width, height);
+  // LOG(INFO) << "origin_corners: \n"
+  //           << origin_corners[0] << ", " << origin_corners[1] << ", "
+  //           << origin_corners[2] << ", " << origin_corners[3];
+
+  auto predict_corners = getBoxCorners(end_person2odom, width, height);
+  // LOG(INFO) << "predict_corners: \n" << predict_corners[0] << ", "
+  //           << predict_corners[1] << ", " << predict_corners[2] << ", "
+  //           << predict_corners[3];
+  corners.insert(corners.end(), origin_corners.begin(), origin_corners.end());
+  corners.insert(corners.end(), predict_corners.begin(), predict_corners.end());
+  std::tuple<double, double, double, double> min_max = getBoxMinMax(corners);
+  double min_x = std::get<0>(min_max);
+  double min_y = std::get<1>(min_max);
+  double max_x = std::get<2>(min_max);
+  double max_y = std::get<3>(min_max);
+  LOG(INFO) << "min_x: " << min_x << ", max_x: " << max_x
+            << ", min_y: " << min_y << ", max_y: " << max_y;
+
+  geometry_msgs::PolygonStamped polygon;
+  polygon.header = header;
+  geometry_msgs::Point32 p1, p2, p3, p4;
+  p1.x = min_x;
+  p1.y = min_y;
+  p2.x = max_x;
+  p2.y = min_y;
+  p3.x = max_x;
+  p3.y = max_y;
+  p4.x = min_x;
+  p4.y = max_y;
+  polygon.polygon.points.push_back(p1);
+  polygon.polygon.points.push_back(p2);
+  polygon.polygon.points.push_back(p3);
+  polygon.polygon.points.push_back(p4);
+
+  // 转换为map坐标
+  auto resolution = map.info.resolution;
+  auto origin_x = map.info.origin.position.x;
+  auto origin_y = map.info.origin.position.y;
+  auto map_width = map.info.width;
+  auto map_height = map.info.height;
+  unsigned int mx0 =
+      std::max(0u, static_cast<unsigned int>((min_x - origin_x) / resolution));
+  unsigned int mx1 =
+      std::min(map_width - 1,
+               static_cast<unsigned int>((max_x - origin_x) / resolution));
+  unsigned int my0 =
+      std::max(0u, static_cast<unsigned int>((min_y - origin_y) / resolution));
+  unsigned int my1 =
+      std::min(map_height - 1,
+               static_cast<unsigned int>((max_y - origin_y) / resolution));
+
+  // costmap
+  unsigned char *costmap = new unsigned char[size];
+  memcpy(costmap, map.data.data(), size);
+
+  // 设置预测区域
+  for (unsigned int mx = mx0; mx <= mx1; ++mx) {
+    for (unsigned int my = my0; my <= my1; ++my) {
+      costmap[my * map_width + mx] = 255;
+    }
+  }
+
+  // 填充costmap
+  nav_msgs::OccupancyGrid new_map = map;
+  for (size_t i = 0; i < size; ++i) {
+    map.data[i] = static_cast<signed char>(costmap[i]);
+  }
+  LOG(INFO) << "costmap: " << costmap[49 * 100 + 49];
+  LOG(INFO) << "map: " << map.data[49 * 100 + 49];
+
+  while (ros::ok()) {
+    map_pub.publish(map);
+    // new_map_pub.publish(new_map);
+    marker_pub.publish(marker_array);
+    predict_marker_pub.publish(predict_marker_array);
+    polygon_pub.publish(polygon);
+  }
+
+  return 0;
+}

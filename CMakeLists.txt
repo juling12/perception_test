@@ -95,6 +95,24 @@ target_link_libraries(icp2d_test
   glog
 )
 
+add_executable(costmap_prediction src/costmap_prediction.cpp)
+target_link_libraries(costmap_prediction
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  ${PCL_LIBRARIES}
+  gflags
+  glog
+)
+
+add_executable(pose_test src/pose_test.cpp)
+target_link_libraries(pose_test
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  ${PCL_LIBRARIES}
+  gflags
+  glog
+)
+
 install(DIRECTORY  cmake
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
