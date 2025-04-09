@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 10:00:42
+ * @LastEditTime: 2025-04-09 10:40:36
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -331,7 +331,7 @@ int main(int argc, char *argv[]) {
   // 计算边界框范围
   auto corners = getCorners(person_state, 2);
 
-  std::vector<geometry_msgs::Point32> odom_corners;
+  std::vector<cv::Point2d> odom_corners;
   geometry_msgs::PolygonStamped polygon;
   polygon.header = header;
   for (const auto &pt : corners) {
@@ -342,7 +342,7 @@ int main(int argc, char *argv[]) {
     p.y = odom_pt.y();
     p.z = 0.0;
     polygon.polygon.points.push_back(p);
-    odom_corners.push_back(p);
+    odom_corners.push_back(cv::Point2d{p.x, p.y});
   }
 
   auto min_max = getBoxMinMax(odom_corners);
@@ -359,35 +359,23 @@ int main(int argc, char *argv[]) {
   auto origin_y = map.info.origin.position.y;
   auto map_width = map.info.width;
   auto map_height = map.info.height;
-  unsigned int mx0 =
-      std::max(0u, static_cast<unsigned int>((min_x - origin_x) / resolution));
-  unsigned int mx1 =
-      std::min(map_width - 1,
-               static_cast<unsigned int>((max_x - origin_x) / resolution));
-  unsigned int my0 =
-      std::max(0u, static_cast<unsigned int>((min_y - origin_y) / resolution));
-  unsigned int my1 =
-      std::min(map_height - 1,
-               static_cast<unsigned int>((max_y - origin_y) / resolution));
+  LOG(INFO) << "resolution: " << resolution << ", origin_x: " << origin_x
+            << ", origin_y: " << origin_y << ", map_width: " << map_width
+            << ", map_height: " << map_height;
 
-  // costmap
-  unsigned char *costmap = new unsigned char[size];
-  memcpy(costmap, map.data.data(), size);
-
-  // 设置预测区域
-  for (unsigned int mx = mx0; mx <= mx1; ++mx) {
-    for (unsigned int my = my0; my <= my1; ++my) {
-      costmap[my * map_width + mx] = 255;
+  std::vector<cv::Point> polygon_pixels;
+  for (const auto &pt : odom_corners) {
+    unsigned int mx, my;
+    if (worldToMap(pt.x, pt.y, mx, my, origin_x, origin_y, resolution,
+                   map_width, map_height)) {
+      LOG(INFO) << "mx: " << mx << ", my: " << my;
+      polygon_pixels.push_back(cv::Point(mx, my));
     }
   }
 
-  // 填充costmap
-  nav_msgs::OccupancyGrid new_map = map;
-  for (size_t i = 0; i < size; ++i) {
-    map.data[i] = static_cast<signed char>(costmap[i]);
-  }
-  LOG(INFO) << "costmap: " << costmap[49 * 100 + 49];
-  LOG(INFO) << "map: " << map.data[49 * 100 + 49];
+  cv::Mat map_img(map_height, map_width, CV_8UC1, cv::Scalar(0));
+  cv::fillPoly(map_img, std::vector<std::vector<cv::Point>>{polygon_pixels},
+               255);
 
   while (ros::ok()) {
     map_pub.publish(map);
