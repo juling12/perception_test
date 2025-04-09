@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 10:40:36
+ * @LastEditTime: 2025-04-09 11:11:56
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -232,8 +232,6 @@ int main(int argc, char *argv[]) {
   ros::NodeHandle nh;
   ros::Publisher map_pub =
       nh.advertise<nav_msgs::OccupancyGrid>("/grid_map", 1);
-  ros::Publisher new_map_pub =
-      nh.advertise<nav_msgs::OccupancyGrid>("/new_grid_map", 1);
   ros::Publisher marker_pub = nh.advertise<visualization_msgs::MarkerArray>(
       "/people_status_visualization", 10);
   ros::Publisher predict_marker_pub =
@@ -374,12 +372,28 @@ int main(int argc, char *argv[]) {
   }
 
   cv::Mat map_img(map_height, map_width, CV_8UC1, cv::Scalar(0));
+  for (int i = 0; i < map_height; ++i) {
+    for (int j = 0; j < map_width; ++j) {
+      int idx = i * map_width + j;
+      map_img.at<uchar>(i, j) =
+          (map.data[idx] >= 0) ? static_cast<uchar>(map.data[idx]) : 0;
+    }
+  }
   cv::fillPoly(map_img, std::vector<std::vector<cv::Point>>{polygon_pixels},
                255);
 
+  map.data.resize(map_width * map_height);
+  for (int i = 0; i < map_height; ++i) {
+    for (int j = 0; j < map_width; ++j) {
+      int idx = i * map_width + j;
+      if (map_img.at<uchar>(i, j) == 255) {
+        map.data[idx] = 100;
+      }
+    }
+  }
+
   while (ros::ok()) {
     map_pub.publish(map);
-    // new_map_pub.publish(new_map);
     marker_pub.publish(marker_array);
     predict_marker_pub.publish(predict_marker_array);
     polygon_pub.publish(polygon);
