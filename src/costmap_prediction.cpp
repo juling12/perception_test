@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 09:36:29
+ * @LastEditTime: 2025-04-09 10:00:42
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -183,10 +183,28 @@ std::tuple<double, double, double, double> getBoxMinMax(
 }
 
 /**
- * @brief 计算person坐标系下最终四个角点
+ * @brief 计算角点的最大最小值
  */
-std::vector<geometry_msgs::Point32> getCorners(const PersonState &person_state,
-                                               const double &delta_t) {
+std::tuple<double, double, double, double> getBoxMinMax(
+    const std::vector<cv::Point2d> &corners) {
+  double min_x = corners[0].x, max_x = corners[0].x;
+  double min_y = corners[0].y, max_y = corners[0].y;
+
+  for (const auto &pt : corners) {
+    min_x = std::min(min_x, pt.x);
+    max_x = std::max(max_x, pt.x);
+    min_y = std::min(min_y, pt.y);
+    max_y = std::max(max_y, pt.y);
+  }
+
+  return std::make_tuple(min_x, min_y, max_x, max_y);
+}
+
+/**
+ * @brief 计算person坐标系下四个角点
+ */
+std::vector<cv::Point2d> getCorners(const PersonState &person_state,
+                                    const double &delta_t) {
   auto center_x = person_state.x;
   auto center_y = person_state.y;
   auto theta = atan2(person_state.vy, person_state.vx);
@@ -196,30 +214,16 @@ std::vector<geometry_msgs::Point32> getCorners(const PersonState &person_state,
 
   double w = box_width * 0.5;
   double h = box_height * 0.5;
+  auto d = v * delta_t;
   std::vector<cv::Point2d> local_corners = {{w, h}, {-w, h}, {-w, -h}, {w, -h}};
-  std::vector<geometry_msgs::Point32> corners;
-  for (auto &pt : local_corners) {
-    corners.emplace_back(pt);
-    pt.x = pt.x + v * delta_t;
-    corners.emplace_back(pt);
-  }
-
-  auto min_max = getBoxMinMax(corners);
-  double min_x = std::get<0>(min_max);
-  double min_y = std::get<1>(min_max);
-  double max_x = std::get<2>(min_max);
-  double max_y = std::get<3>(min_max);
-
-  geometry_msgs::Point32 p1, p2, p3, p4;
-  p1.x = min_x;
-  p1.y = min_y;
-  p2.x = max_x;
-  p2.y = min_y;
-  p3.x = max_x;
-  p3.y = max_y;
-  p4.x = min_x;
-  p4.y = max_y;
-
+  std::vector<cv::Point2d> pred_local_corners = {
+      {w + d, h}, {-w + d, h}, {-w + d, -h}, {w + d, -h}};
+  std::vector<cv::Point2d> corners;
+  corners.reserve(local_corners.size());
+  corners.push_back(pred_local_corners[0]);
+  corners.push_back(local_corners[1]);
+  corners.push_back(local_corners[2]);
+  corners.push_back(pred_local_corners[3]);
   return corners;
 }
 
@@ -325,41 +329,29 @@ int main(int argc, char *argv[]) {
   end_person2odom.translation() = Eigen::Vector3d(pred_x, pred_y, 0.0);
 
   // 计算边界框范围
-  std::vector<geometry_msgs::Point32> corners;
-  auto origin_corners = getBoxCorners(cur_person2odom, width, height);
-  // LOG(INFO) << "origin_corners: \n"
-  //           << origin_corners[0] << ", " << origin_corners[1] << ", "
-  //           << origin_corners[2] << ", " << origin_corners[3];
+  auto corners = getCorners(person_state, 2);
 
-  auto predict_corners = getBoxCorners(end_person2odom, width, height);
-  // LOG(INFO) << "predict_corners: \n" << predict_corners[0] << ", "
-  //           << predict_corners[1] << ", " << predict_corners[2] << ", "
-  //           << predict_corners[3];
-  corners.insert(corners.end(), origin_corners.begin(), origin_corners.end());
-  corners.insert(corners.end(), predict_corners.begin(), predict_corners.end());
-  std::tuple<double, double, double, double> min_max = getBoxMinMax(corners);
+  std::vector<geometry_msgs::Point32> odom_corners;
+  geometry_msgs::PolygonStamped polygon;
+  polygon.header = header;
+  for (const auto &pt : corners) {
+    Eigen::Vector3d local_pt(pt.x, pt.y, 0.0);
+    auto odom_pt = cur_person2odom * local_pt;
+    geometry_msgs::Point32 p;
+    p.x = odom_pt.x();
+    p.y = odom_pt.y();
+    p.z = 0.0;
+    polygon.polygon.points.push_back(p);
+    odom_corners.push_back(p);
+  }
+
+  auto min_max = getBoxMinMax(odom_corners);
   double min_x = std::get<0>(min_max);
   double min_y = std::get<1>(min_max);
   double max_x = std::get<2>(min_max);
   double max_y = std::get<3>(min_max);
-  LOG(INFO) << "min_x: " << min_x << ", max_x: " << max_x
-            << ", min_y: " << min_y << ", max_y: " << max_y;
-
-  geometry_msgs::PolygonStamped polygon;
-  polygon.header = header;
-  geometry_msgs::Point32 p1, p2, p3, p4;
-  p1.x = min_x;
-  p1.y = min_y;
-  p2.x = max_x;
-  p2.y = min_y;
-  p3.x = max_x;
-  p3.y = max_y;
-  p4.x = min_x;
-  p4.y = max_y;
-  polygon.polygon.points.push_back(p1);
-  polygon.polygon.points.push_back(p2);
-  polygon.polygon.points.push_back(p3);
-  polygon.polygon.points.push_back(p4);
+  LOG(INFO) << "min_x: " << min_x << ", min_y: " << min_y
+            << ", max_x: " << max_x << ", max_y: " << max_y;
 
   // 转换为map坐标
   auto resolution = map.info.resolution;
