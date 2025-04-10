@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-10 11:09:39
+ * @LastEditTime: 2025-04-10 11:43:55
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -225,28 +225,28 @@ std::tuple<double, double, double, double> getBoxMinMax(
 /**
  * @brief 计算person坐标系下预测区域的四个角点
  */
-std::vector<cv::Point2d> getCorners(const PersonState &person_state,
-                                    const double &delta_t) {
-  auto center_x = person_state.x;
-  auto center_y = person_state.y;
-  auto theta = atan2(person_state.vy, person_state.vx);
-  auto box_width = person_state.width;
-  auto box_height = person_state.height;
-  auto v = std::hypot(person_state.vx, person_state.vy);
+bool getCorners(const PersonState &person_state,
+                std::vector<cv::Point2d> &corners) {
+  if (!person_state.has_pred_xy) {
+    LOG(ERROR) << "person_state not update pred_x and pred_y";
+    return false;
+  }
 
-  double w = box_width * 0.5;
-  double h = box_height * 0.5;
+  double w = person_state.width * 0.5;
+  double h = person_state.height * 0.5;
+  auto v = std::hypot(person_state.vx, person_state.vy);
+  auto delta_t = (person_state.pred_x - person_state.x) / person_state.vx;
   auto d = v * delta_t;
+
   std::vector<cv::Point2d> local_corners = {{w, h}, {-w, h}, {-w, -h}, {w, -h}};
   std::vector<cv::Point2d> pred_local_corners = {
       {w + d, h}, {-w + d, h}, {-w + d, -h}, {w + d, -h}};
-  std::vector<cv::Point2d> corners;
   corners.reserve(local_corners.size());
   corners.push_back(pred_local_corners[0]);
   corners.push_back(local_corners[1]);
   corners.push_back(local_corners[2]);
   corners.push_back(pred_local_corners[3]);
-  return corners;
+  return true;
 }
 
 visualization_msgs::MarkerArray drawPersonState(
@@ -323,9 +323,8 @@ bool generatePredictionMap(const std_msgs::Header &header,
   //           << person2odom.rotation().eulerAngles(2, 1, 0).transpose();
 
   // get odom_corners
-  auto corners = getCorners(person_state, delta_t);
-
-  std::vector<cv::Point2d> odom_corners;
+  std::vector<cv::Point2d> corners, odom_corners;
+  if (!getCorners(person_state, corners)) return false;
   polygon_msg.header = header;
   for (const auto &pt : corners) {
     Eigen::Vector3d local_pt(pt.x, pt.y, 0.0);
