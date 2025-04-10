@@ -2,7 +2,7 @@
  * @Author: juling julinger@qq.com
  * @Date: 2025-04-07 16:58:16
  * @LastEditors: juling julinger@qq.com
- * @LastEditTime: 2025-04-09 14:18:48
+ * @LastEditTime: 2025-04-10 11:09:39
  */
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PolygonStamped.h>
@@ -21,12 +21,66 @@
 
 struct PersonState {
   uint id;
-  float x;
-  float y;
-  float vx;
-  float vy;
-  float height;
-  float width;
+  double x;
+  double y;
+  double vx;
+  double vy;
+  double height;
+  double width;
+
+  double theta;
+  Eigen::Affine3d person2odom;
+  double pred_x;
+  double pred_y;
+  bool has_pred_xy;
+
+  PersonState(uint _id, double _x, double _y, double _vx, double _vy,
+              double _height, double _width)
+      : id(_id),
+        x(_x),
+        y(_y),
+        vx(_vx),
+        vy(_vy),
+        height(_height),
+        width(_width),
+        pred_x(0),
+        pred_y(0),
+        has_pred_xy(false) {
+    theta = atan2(vy, vx);
+    person2odom = Eigen::Affine3d::Identity();
+    person2odom.translation() = Eigen::Vector3d(x, y, 0.0);
+    Eigen::Quaterniond q(Eigen::AngleAxisd(theta, Eigen::Vector3d::UnitZ()));
+    person2odom.linear() = q.toRotationMatrix();
+  }
+
+  void updatePredXY(double delta_t) {
+    pred_x = x + vx * delta_t;
+    pred_y = y + vy * delta_t;
+    has_pred_xy = true;
+  }
+
+  void updateState(double new_x, double new_y, double new_vx, double new_vy) {
+    x = new_x;
+    y = new_y;
+    vx = new_vx;
+    vy = new_vy;
+    theta = atan2(vy, vx);
+    person2odom.translation() = Eigen::Vector3d(x, y, 0.0);
+    Eigen::Quaterniond q(Eigen::AngleAxisd(theta, Eigen::Vector3d::UnitZ()));
+    person2odom.linear() = q.toRotationMatrix();
+  }
+
+  friend std::ostream &operator<<(std::ostream &os, const PersonState &ps) {
+    os << "id: " << ps.id << ", x: " << ps.x << ", y: " << ps.y
+       << ", vx: " << ps.vx << ", vy: " << ps.vy << ", theta: " << ps.theta
+       << "(degree: " << ps.theta * 180 / M_PI << "), height: " << ps.height
+       << ", width: " << ps.width;
+
+    if (ps.has_pred_xy)
+      os << ", pred_x: " << ps.pred_x << ", pred_y: " << ps.pred_y;
+
+    // os << ", person2odom: \n" << ps.person2odom.matrix();
+  }
 };
 
 /**
@@ -195,6 +249,156 @@ std::vector<cv::Point2d> getCorners(const PersonState &person_state,
   return corners;
 }
 
+visualization_msgs::MarkerArray drawPersonState(
+    const std_msgs::Header &header, const PersonState &person_state) {
+  if (!person_state.has_pred_xy) {
+    LOG(ERROR) << "person_state not update pred_x and pred_y";
+    return {};
+  }
+  auto center_x = person_state.x;
+  auto center_y = person_state.y;
+  auto theta = person_state.theta;
+  auto height = person_state.height;
+  auto width = person_state.width;
+  auto vx = person_state.vx;
+  auto vy = person_state.vy;
+  auto pred_x = person_state.pred_x;
+  auto pred_y = person_state.pred_y;
+
+  // add visualization
+  visualization_msgs::MarkerArray marker_array;
+
+  auto box2d = drawBox2d(header, center_x, center_y, theta, width, height, 0);
+  auto box2d_center = drawBoxCenter(header, center_x, center_y, 1);
+  geometry_msgs::Point start_point, end_point;
+  start_point.x = center_x;
+  start_point.y = center_y;
+  start_point.z = 0.01;
+  end_point.x = center_x + vx * 1;
+  end_point.y = center_y + vy * 1;
+  end_point.z = 0.01;
+  auto velocity_arrow = drawArrow(header, start_point, end_point, 2);
+  marker_array.markers.push_back(box2d);
+  marker_array.markers.push_back(box2d_center);
+  marker_array.markers.push_back(velocity_arrow);
+
+  box2d = drawBox2d(header, pred_x, pred_y, theta, width, height, 3);
+  box2d_center = drawBoxCenter(header, pred_x, pred_y, 4);
+  marker_array.markers.push_back(box2d);
+  marker_array.markers.push_back(box2d_center);
+
+  return marker_array;
+}
+
+/*
+ * @brief 可视化person_state，获得仅包含预测区域的costmap
+ * @param delta_t 预测时间
+ * @param map 只有预测区域的costamp（nav_msgs::OccupancyGrid类型）
+ * @return 是否预测成功
+ */
+bool generatePredictionMap(const std_msgs::Header &header,
+                           const PersonState &person_state,
+                           const double &delta_t,
+                           geometry_msgs::PolygonStamped &polygon_msg,
+                           nav_msgs::OccupancyGrid &map) {
+  if (!person_state.has_pred_xy) {
+    LOG(ERROR) << "person_state not update pred_x and pred_y";
+    return false;
+  }
+
+  // parse info
+  auto center_x = person_state.x;
+  auto center_y = person_state.y;
+  auto theta = person_state.theta;
+  auto height = person_state.height;
+  auto width = person_state.width;
+  auto vx = person_state.vx;
+  auto vy = person_state.vy;
+  auto pred_x = person_state.pred_x;
+  auto pred_y = person_state.pred_y;
+  auto person2odom = person_state.person2odom;
+  // LOG(INFO) << "person_state: " << person_state;
+  // LOG(INFO) << "person2odom trans: " << person2odom.translation().transpose()
+  //           << ", euler: "
+  //           << person2odom.rotation().eulerAngles(2, 1, 0).transpose();
+
+  // get odom_corners
+  auto corners = getCorners(person_state, delta_t);
+
+  std::vector<cv::Point2d> odom_corners;
+  polygon_msg.header = header;
+  for (const auto &pt : corners) {
+    Eigen::Vector3d local_pt(pt.x, pt.y, 0.0);
+    auto odom_pt = person2odom * local_pt;
+    geometry_msgs::Point32 p;
+    p.x = odom_pt.x();
+    p.y = odom_pt.y();
+    p.z = 0.0;
+    polygon_msg.polygon.points.push_back(p);
+    odom_corners.push_back(cv::Point2d{p.x, p.y});
+  }
+
+  // world to map
+  auto resolution = map.info.resolution;
+  auto origin_x = map.info.origin.position.x;
+  auto origin_y = map.info.origin.position.y;
+  auto map_width = map.info.width;
+  auto map_height = map.info.height;
+  LOG(INFO) << "resolution: " << resolution << ", origin_x: " << origin_x
+            << ", origin_y: " << origin_y << ", map_width: " << map_width
+            << ", map_height: " << map_height;
+
+  std::vector<cv::Point> polygon_pixels;
+  for (const auto &pt : odom_corners) {
+    unsigned int mx, my;
+    if (worldToMap(pt.x, pt.y, mx, my, origin_x, origin_y, resolution,
+                   map_width, map_height)) {
+      LOG(INFO) << "mx: " << mx << ", my: " << my;
+      polygon_pixels.push_back(cv::Point(mx, my));
+    }
+  }
+
+  // fill polygon
+  cv::Mat map_img(map_height, map_width, CV_8UC1, cv::Scalar(0));
+  cv::fillPoly(map_img, std::vector<std::vector<cv::Point>>{polygon_pixels},
+               255);
+
+  map.data.clear();  // reset map
+
+  // update to prediction area map
+  map.data.resize(map_width * map_height);
+  for (int i = 0; i < map_height; ++i) {
+    for (int j = 0; j < map_width; ++j) {
+      int idx = i * map_width + j;
+      if (map_img.at<uchar>(i, j) == 255) {
+        map.data[idx] = 100;
+      }
+    }
+  }
+
+  return true;
+}
+
+bool mergeMaps(const nav_msgs::OccupancyGrid &original_map,
+               const nav_msgs::OccupancyGrid &pred_map,
+               nav_msgs::OccupancyGrid &merged_map) {
+  if (original_map.info.width != pred_map.info.width ||
+      original_map.info.height != pred_map.info.height ||
+      original_map.info.resolution != pred_map.info.resolution) {
+    LOG(ERROR) << "Map dimensions do not match, cannot merge";
+    return false;
+  }
+
+  merged_map = original_map;
+
+  for (size_t i = 0; i < pred_map.data.size(); ++i) {
+    if (pred_map.data[i] == 100) {
+      merged_map.data[i] = std::max(original_map.data[i], pred_map.data[i]);
+    }
+  }
+  return true;
+}
+
 int main(int argc, char *argv[]) {
   ros::init(argc, argv, "gridMap");
   ros::NodeHandle nh;
@@ -230,131 +434,36 @@ int main(int argc, char *argv[]) {
   std::vector<signed char> a(p, p + size);
   map.data = a;
 
+  double delta_t = 2;  // 预测2s
+
   // odom下的人腿信息
-  PersonState person_state;
-  person_state.id = 0;
-  person_state.x = 0.5;
-  person_state.y = 1.0;
-  person_state.vx = 0.1;
-  person_state.vy = 0.2;
-  person_state.height = 0.3;
-  person_state.width = 0.1;
-
-  auto center_x = person_state.x;
-  auto center_y = person_state.y;
-  auto theta = atan2(person_state.vy, person_state.vx);
-  auto height = person_state.height;
-  auto width = person_state.width;
-  auto vx = person_state.vx;
-  auto vy = person_state.vy;
-  LOG(INFO) << "theta: " << theta << ", theta(degree): " << theta * 180 / M_PI;
-
-  Eigen::Affine3d person2odom = Eigen::Affine3d::Identity();
-  person2odom.translation() = Eigen::Vector3d(center_x, center_y, 0.0);
-  Eigen::Quaterniond q(Eigen::AngleAxisd(theta, Eigen::Vector3d::UnitZ()));
-  person2odom.linear() = q.toRotationMatrix();
-  LOG(INFO) << "person2odom trans: " << person2odom.translation().transpose()
-            << ", euler: " << person2odom.rotation().eulerAngles(2, 1, 0);
+  PersonState person_state(0, 0.5, 1.0, 0.1, 0.2, 0.3, 0.1);
+  auto &ps = person_state;
+  ps.updatePredXY(delta_t);
+  LOG(INFO) << "person_state: " << person_state;
+  // LOG(INFO) << "person2odom trans: " <<
+  // ps.person2odom.translation().transpose()
+  //           << ", euler: "
+  //           << ps.person2odom.rotation().eulerAngles(2, 1, 0).transpose();
 
   // 可视化人腿信息
+  visualization_msgs::MarkerArray marker_array;
   std_msgs::Header header;
   header.frame_id = "odom";
   header.stamp = ros::Time::now();
+  marker_array = drawPersonState(header, ps);
 
-  geometry_msgs::Point start_point, end_point;
-  start_point.x = center_x;
-  start_point.y = center_y;
-  start_point.z = 0.01;
-  end_point.x = center_x + vx * 1;
-  end_point.y = center_y + vy * 1;
-  end_point.z = 0.01;
-  auto velocity_arrow = drawArrow(header, start_point, end_point, 2);
-  auto box2d = drawBox2d(header, center_x, center_y, theta, width, height, 0);
-  auto box2d_center = drawBoxCenter(header, center_x, center_y, 1);
-
-  visualization_msgs::MarkerArray marker_array;
-  marker_array.markers.push_back(box2d);
-  marker_array.markers.push_back(box2d_center);
-  marker_array.markers.push_back(velocity_arrow);
-
-  // 预测2s
-  double pred_x = center_x + vx * 2;
-  double pred_y = center_y + vy * 2;
-  LOG(INFO) << "pred_x: " << pred_x << ", pred_y: " << pred_y;
-
-  box2d = drawBox2d(header, pred_x, pred_y, theta, width, height, 3);
-  box2d_center = drawBoxCenter(header, pred_x, pred_y, 4);
-  marker_array.markers.push_back(box2d);
-  marker_array.markers.push_back(box2d_center);
-
-  // 计算边界框范围
-  auto corners = getCorners(person_state, 2);
-
-  std::vector<cv::Point2d> odom_corners;
+  // 计算prediction区域
   geometry_msgs::PolygonStamped polygon;
-  polygon.header = header;
-  for (const auto &pt : corners) {
-    Eigen::Vector3d local_pt(pt.x, pt.y, 0.0);
-    auto odom_pt = person2odom * local_pt;
-    geometry_msgs::Point32 p;
-    p.x = odom_pt.x();
-    p.y = odom_pt.y();
-    p.z = 0.0;
-    polygon.polygon.points.push_back(p);
-    odom_corners.push_back(cv::Point2d{p.x, p.y});
-  }
+  nav_msgs::OccupancyGrid pred_map = map;
+  if (!generatePredictionMap(header, ps, delta_t, polygon, pred_map)) return -1;
 
-  auto min_max = getBoxMinMax(odom_corners);
-  double min_x = std::get<0>(min_max);
-  double min_y = std::get<1>(min_max);
-  double max_x = std::get<2>(min_max);
-  double max_y = std::get<3>(min_max);
-  LOG(INFO) << "min_x: " << min_x << ", min_y: " << min_y
-            << ", max_x: " << max_x << ", max_y: " << max_y;
-
-  // 转换为map坐标
-  auto resolution = map.info.resolution;
-  auto origin_x = map.info.origin.position.x;
-  auto origin_y = map.info.origin.position.y;
-  auto map_width = map.info.width;
-  auto map_height = map.info.height;
-  LOG(INFO) << "resolution: " << resolution << ", origin_x: " << origin_x
-            << ", origin_y: " << origin_y << ", map_width: " << map_width
-            << ", map_height: " << map_height;
-
-  std::vector<cv::Point> polygon_pixels;
-  for (const auto &pt : odom_corners) {
-    unsigned int mx, my;
-    if (worldToMap(pt.x, pt.y, mx, my, origin_x, origin_y, resolution,
-                   map_width, map_height)) {
-      LOG(INFO) << "mx: " << mx << ", my: " << my;
-      polygon_pixels.push_back(cv::Point(mx, my));
-    }
-  }
-
-  cv::Mat map_img(map_height, map_width, CV_8UC1, cv::Scalar(0));
-  for (int i = 0; i < map_height; ++i) {
-    for (int j = 0; j < map_width; ++j) {
-      int idx = i * map_width + j;
-      map_img.at<uchar>(i, j) =
-          (map.data[idx] >= 0) ? static_cast<uchar>(map.data[idx]) : 0;
-    }
-  }
-  cv::fillPoly(map_img, std::vector<std::vector<cv::Point>>{polygon_pixels},
-               255);
-
-  map.data.resize(map_width * map_height);
-  for (int i = 0; i < map_height; ++i) {
-    for (int j = 0; j < map_width; ++j) {
-      int idx = i * map_width + j;
-      if (map_img.at<uchar>(i, j) == 255) {
-        map.data[idx] = 100;
-      }
-    }
-  }
+  // 合并map
+  nav_msgs::OccupancyGrid merged_map;
+  if (!mergeMaps(map, pred_map, merged_map)) return -1;
 
   while (ros::ok()) {
-    map_pub.publish(map);
+    map_pub.publish(merged_map);
     marker_pub.publish(marker_array);
     polygon_pub.publish(polygon);
   }
