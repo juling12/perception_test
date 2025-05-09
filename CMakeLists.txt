@@ -113,6 +113,15 @@ target_link_libraries(pose_test
   glog
 )
 
+add_executable(rotate_test src/rotate_test.cpp)
+target_link_libraries(rotate_test
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  ${PCL_LIBRARIES}
+  gflags
+  glog
+)
+
 install(DIRECTORY  cmake
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
