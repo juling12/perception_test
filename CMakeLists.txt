@@ -23,6 +23,8 @@ find_package(catkin REQUIRED COMPONENTS
   iplus_perception
   pluginlib
   class_loader
+  rosbag
+  jsk_recognition_msgs
   )
 
 find_package(Boost REQUIRED COMPONENTS system)
@@ -118,6 +120,30 @@ target_link_libraries(rotate_test
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
   ${PCL_LIBRARIES}
+  gflags
+  glog
+)
+
+add_executable(bag_offset src/bag_offset.cpp)
+target_link_libraries(bag_offset
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  gflags
+  glog
+)
+
+add_executable(bag_merge src/bag_merge.cpp)
+target_link_libraries(bag_merge
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  gflags
+  glog
+)
+
+add_executable(bag_merge_simple src/bag_merge_simple.cpp)
+target_link_libraries(bag_merge_simple
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
   gflags
   glog
 )
